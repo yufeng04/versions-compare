@@ -1,5 +1,5 @@
 {
-  "name": "version-compare",
+  "name": "versions-compare",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -14,11 +14,12 @@
     "type": "git",
     "url": "git+https://github.com/searchfe/version-compare.git"
   },
-  "author": "pearl",
+  "author": "pearl_wang",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/searchfe/version-compare/issues"
   },
+  "files": ["src/*"],
   "homepage": "https://github.com/searchfe/version-compare#readme",
   "devDependencies": {
     "chai": "^3.5.0",

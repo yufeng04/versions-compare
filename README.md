@@ -11,7 +11,7 @@ apmjs install --save @searchfe/user-agent
 ## 例子
 
 ```javascript
-var compare = require('@searchfe/version-compare');
+var compare = require('versions-compare');
 
 compare(1, 2); // -1
 compare([1,2 ], [1, 3]); // -1
