@@ -5,7 +5,7 @@
 ## 安装
 
 ```bash
-apmjs install --save @searchfe/user-agent
+apmjs install --save versions-compare
 ```
 
 ## 例子
