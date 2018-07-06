@@ -1,11 +1,11 @@
-# Version Compare 工具
+# Versions Compare 工具
 
 版本对比工具
 
 ## 安装
 
 ```bash
-apmjs install --save versions-compare
+npm install --save versions-compare
 ```
 
 ## 例子
