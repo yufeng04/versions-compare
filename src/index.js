@@ -84,9 +84,9 @@ define(function (require) {
      *
      * @return {integer} 1: a > b; 0: a === b; -1: a < b
      */
-    function exec (a, b, isReverse) {
+    return function exec (a, b, isReverse) {
 
-        var util = require('src/util');
+        var util = require('./util');
 
         if (util.isArray(a) && util.isArray(b)) {
             return arrayCompare(a, b, isReverse)
@@ -101,10 +101,5 @@ define(function (require) {
         }
 
         return 'Wrong Params.';
-    }
-
-
-    return {
-        exec: exec
     }
 });
