@@ -1,3 +1,9 @@
+/**
+ * @file index.js 工具文件
+ *
+ * @author  pearl
+ * @date 2018-08-07
+ */
 define(function (require) {
 
     /**
@@ -8,7 +14,7 @@ define(function (require) {
      *
      * @return {integer} 1: a > b; 0: a === b; -1: a < b
      */
-    function compare (a, b) {
+    function compare(a, b) {
         if (a > b) {
             return 1;
         }
@@ -22,13 +28,13 @@ define(function (require) {
     /**
      * [arrayCompare 数组形式的比较]
      *
-     * @param  {Array}   a
-     * @param  {Array}   b
-     * @param  {Boolean} isReverse [是否反转数组]
+     * @param  {Array}   a  版本1
+     * @param  {Array}   b  版本2
+     * @param  {boolean} isReverse [是否反转数组]
      *
      * @return {integer} 1: a > b; 0: a === b; -1: a < b
      */
-    function arrayCompare (a, b, isReverse) {
+    function arrayCompare(a, b, isReverse) {
 
         // 有些函数返回的版本号是逆序的，此时 isReverse 传 true 即可
         if (isReverse) {
@@ -40,7 +46,7 @@ define(function (require) {
         var lenB = b.length;
 
         for (var i = 0; i < Math.min(lenA, lenB); i++) {
-            var t = compare(a[i], b[i])
+            var t = compare(a[i], b[i]);
 
             // 相同位置的数字不一致，则有大小结论
             if (!!t) {
@@ -63,43 +69,48 @@ define(function (require) {
 
 
     /**
-     * [stringCompare 字符串形式的版本号对比函数]
+     * [dataPreprocess 数据预处理函数，判断参数格式是否符合预期]
      *
-     * @param  {string}  a
-     * @param  {string}  b
-     * @param  {Boolean} isReverse 是否反转数组
-     *
-     * @return {integer} 1: a > b; 0: a === b; -1: a < b
+     * @param  {Number/Array/String} version 版本号
+     * @return {Array}               转换为数组后的版本号
      */
-    function stringCompare (a, b) {
-        return arrayCompare(a.split('.'), b.split('.'));
-    }
-
-    /**
-     * [exec 入口函数]
-     *
-     * @param  {不确定} a
-     * @param  {不确定} b
-     * @param  {Boolean} isReverse [是否反转数组]
-     *
-     * @return {integer} 1: a > b; 0: a === b; -1: a < b
-     */
-    return function exec (a, b, isReverse) {
+    function dataPreprocess(version) {
 
         var util = require('./util');
 
-        if (util.isArray(a) && util.isArray(b)) {
-            return arrayCompare(a, b, isReverse)
+        if (util.isNumber(version)) {
+            version = version.toString();
+        }
+        if (util.isArray(version)) {
+            version = version.join('.');
         }
 
-        if (util.isNumber(a) && util.isNumber(b)) {
-            return compare(a, b);
-        }
+        if (util.isCorrectVersion(version)) {
 
-        if (util.isString(a) && util.isString(b)) {
-            return stringCompare(a, b);
+            return util.toArray(version);
         }
 
         return 'Wrong Params.';
     }
+
+    /**
+     * [main 入口函数]
+     *
+     * @param  {Array}   a  版本1
+     * @param  {Array}   b  版本2
+     * @param  {boolean} isReverse [是否反转数组]
+     *
+     * @return {integer} 1: a > b; 0: a === b; -1: a < b
+     */
+    return function main(a, b, isReverse) {
+
+        a = dataPreprocess(a);
+        b = dataPreprocess(b);
+
+        if (a !== 'Wrong Params.' && b !== 'Wrong Params.') {
+            return arrayCompare(a, b, isReverse);
+        }
+
+        return 'Wrong Params.';
+    };
 });
