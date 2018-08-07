@@ -1,6 +1,6 @@
 {
   "name": "versions-compare",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -19,7 +19,9 @@
   "bugs": {
     "url": "https://github.com/searchfe/version-compare/issues"
   },
-  "files": ["src/*"],
+  "files": [
+    "src/*"
+  ],
   "homepage": "https://github.com/searchfe/version-compare#readme",
   "devDependencies": {
     "chai": "^3.5.0",
