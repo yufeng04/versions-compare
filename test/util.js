@@ -1,5 +1,4 @@
 define(function (require) {
-
     var util = require('src/util');
     var a = 20;
     var b = [1, 2, 3];
@@ -7,7 +6,6 @@ define(function (require) {
     var d = '.1.1';
     var e = '1.2.3.';
     var f = '3';
-
     describe('test', function () {
         it('should detect Number', function () {
             expect(util.isNumber(a)).to.equal(true);

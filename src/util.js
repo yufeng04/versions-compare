@@ -34,8 +34,6 @@ define(function (require) {
             if (this.isString(param)) {
                 return param.split('.').map(parseFloat);
             }
-
         }
     };
-
 });

@@ -4,8 +4,8 @@
  * @author  pearl
  * @date 2018-08-07
  */
-define(function (require) {
 
+define(function (require) {
     /**
      * [compare 比较两个整数的大小]
      *
@@ -14,16 +14,15 @@ define(function (require) {
      *
      * @return {integer} 1: a > b; 0: a === b; -1: a < b
      */
-    function compare(a, b) {
+    function compare (a, b) {
         if (a > b) {
             return 1;
         }
-        else if (a < b) {
+        if (a < b) {
             return -1;
         }
         return 0;
     }
-
 
     /**
      * [arrayCompare 数组形式的比较]
@@ -34,8 +33,7 @@ define(function (require) {
      *
      * @return {integer} 1: a > b; 0: a === b; -1: a < b
      */
-    function arrayCompare(a, b, isReverse) {
-
+    function arrayCompare (a, b, isReverse) {
         // 有些函数返回的版本号是逆序的，此时 isReverse 传 true 即可
         if (isReverse) {
             a = a.reverse();
@@ -49,7 +47,7 @@ define(function (require) {
             var t = compare(a[i], b[i]);
 
             // 相同位置的数字不一致，则有大小结论
-            if (!!t) {
+            if (t !== 0) {
                 return t;
             }
         }
@@ -67,15 +65,13 @@ define(function (require) {
         }
     }
 
-
     /**
      * [dataPreprocess 数据预处理函数，判断参数格式是否符合预期]
      *
      * @param  {Number/Array/String} version 版本号
      * @return {Array}               转换为数组后的版本号
      */
-    function dataPreprocess(version) {
-
+    function dataPreprocess (version) {
         var util = require('./util');
 
         if (util.isNumber(version)) {
@@ -86,7 +82,6 @@ define(function (require) {
         }
 
         if (util.isCorrectVersion(version)) {
-
             return util.toArray(version);
         }
 
@@ -102,8 +97,7 @@ define(function (require) {
      *
      * @return {integer} 1: a > b; 0: a === b; -1: a < b
      */
-    return function main(a, b, isReverse) {
-
+    return function main (a, b, isReverse) {
         a = dataPreprocess(a);
         b = dataPreprocess(b);
 
