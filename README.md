@@ -1,5 +1,8 @@
 # Versions Compare 工具
 
+[![Build Status](https://travis-ci.org/searchfe/versions-compare.svg?branch=master)](https://travis-ci.org/searchfe/versions-compare)
+[![Coverage Status](https://coveralls.io/repos/github/searchfe/versions-compare/badge.svg?branch=master)](https://coveralls.io/github/searchfe/versions-compare?branch=master)
+
 版本对比工具
 
 ## 安装
