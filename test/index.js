@@ -14,6 +14,7 @@ define(['src/index'], function (compare) {
             expect(compare([1, 2], [1, 2])).to.equal(0);
             expect(compare([1, 2], '1.2')).to.equal(0);
             expect(compare([2], 2)).to.equal(0);
+            expect(compare([8], [8, 0, 0])).to.equal(0);
         });
         it('should detect -1', function () {
             expect(compare(1, 2)).to.equal(-1);
