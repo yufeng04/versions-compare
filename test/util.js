@@ -6,6 +6,7 @@ define(function (require) {
     var d = '.1.1';
     var e = '1.2.3.';
     var f = '3';
+    var g = {};
     describe('test', function () {
         it('should detect Number', function () {
             expect(util.isNumber(a)).to.equal(true);
@@ -34,6 +35,7 @@ define(function (require) {
             expect(util.toArray(a)).to.deep.equal([20]);
             expect(util.toArray(b)).to.deep.equal([1, 2, 3]);
             expect(util.toArray(c)).to.deep.equal([1, 0, 3]);
+            expect(util.toArray(g)).to.deep.equal([]);
         });
     });
 });
