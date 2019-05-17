@@ -43,8 +43,8 @@ define(function (require) {
         var lenA = a.length;
         var lenB = b.length;
 
-        for (var i = 0; i < Math.min(lenA, lenB); i++) {
-            var t = compare(a[i], b[i]);
+        for (var i = 0; i < Math.max(lenA, lenB); i++) {
+            var t = compare(a[i] || 0, b[i] || 0);
 
             // 相同位置的数字不一致，则有大小结论
             if (t !== 0) {
@@ -52,17 +52,7 @@ define(function (require) {
             }
         }
 
-        if (lenA === lenB) {
-            return 0;
-        }
-
-        var tmp = lenA > lenB ? a : b;
-        for (var j = i; j < Math.max(lenA, lenB); j++) {
-            if (tmp[j] === 0) {
-                return 0;
-            }
-            return compare(lenA, lenB);
-        }
+        return 0;
     }
 
     /**

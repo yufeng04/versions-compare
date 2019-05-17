@@ -7,6 +7,8 @@ define(['src/index'], function (compare) {
             expect(compare(2, '1')).to.equal(1);
             expect(compare([2], '1')).to.equal(1);
             expect(compare([2, 3], 2)).to.equal(1);
+            expect(compare('1.1.0.1', 1.1)).to.equal(1);
+            expect(compare('1.0.1', '1')).to.equal(1);
         });
         it('should detect 0', function () {
             expect(compare(1, 1)).to.equal(0);
@@ -15,6 +17,8 @@ define(['src/index'], function (compare) {
             expect(compare([1, 2], '1.2')).to.equal(0);
             expect(compare([2], 2)).to.equal(0);
             expect(compare([8], [8, 0, 0])).to.equal(0);
+            expect(compare('1.1.0.0', 1.1)).to.equal(0);
+            expect(compare('1.0.0', '1')).to.equal(0);
         });
         it('should detect -1', function () {
             expect(compare(1, 2)).to.equal(-1);
@@ -23,6 +27,8 @@ define(['src/index'], function (compare) {
             expect(compare([1, 2], '1.4')).to.equal(-1);
             expect(compare('1.2', 2)).to.equal(-1);
             expect(compare('1.2', [1, 4])).to.equal(-1);
+            expect(compare('1', '1.0.1')).to.equal(-1);
+            expect(compare(1.1, '1.1.0.1')).to.equal(-1);
         });
         it('should detect Wrong Params.', function () {
             expect(compare(1, '1.2.')).to.equal('Wrong Params.');
